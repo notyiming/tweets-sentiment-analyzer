@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{%block title%}Home Page{%endblock%}
+
+
+{%block content%}
+<form autocomplete="off" action = "" method="POST">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 mb-5">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">
+                        Sentiment Analysis
+                        {% if username %}
+                            for @{{username}}'s Tweets
+                        {% else %}
+                            of Tweets
+                        {% endif %}
+                    </h3></div>
+<!--                    <div class="card-body">-->
+<!--                    	<div class="input-group mb-3">-->
+<!--						  <input type="text" class="form-control py-4" placeholder="Enter text" name="text"/>-->
+<!--						  <input type="submit" class="btn btn-primary" value="submit" />-->
+<!--						</div>-->
+<!--                        <p>Sentiment Tag: {{results}}</p>-->
+<!--                        <p>Subjectivity: {{sub}}</p>-->
+<!--                    </div>-->
+                    <div class="card-body">
+                    	<div class="input-group mb-3">
+						  <input type="text" class="form-control py-4" placeholder="Enter public Twitter @ username" name="username"/>
+						  <input type="submit" class="btn btn-primary" value="submit" />
+						</div>
+                          {% if tweets %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                      <th scope="col">Tweet</th>
+                                      <th scope="col">Tag</th>
+                                      <th scope="col">Polarity</th>
+                                      <th scope="col">Subjectivity</th>
+                                    </tr>
+                                </thead>
+                              {% for i in range(tweets|length) %}
+                                <tr>
+                                    <td>
+                                        {{ tweets[i] }}
+                                    </td>
+                                    <td>{{ tag[i] }}</td>
+                                    <td>{{ "{:.2f}".format(score[i]) }}</td>
+                                    <td>{{ "{:.2f}".format(subjectivity[i]) }}</td>
+
+                                </tr>
+                              {% endfor %}
+                            </table>
+                          {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{%endblock%}
