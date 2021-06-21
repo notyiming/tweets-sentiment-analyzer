@@ -2,12 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-<!--	<link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}">-->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	<title>{%block title%}{%endblock%}</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </head>
 <body>
-	{%block content%}{%endblock%}
+	<div class="container col-lg-12">
+		{%block content%}{%endblock%}
+		<footer>
+			<div class="d-flex justify-content-end p-3">
+			<a target="_blank" href="https://www.tanyiming.com" class="copyright-link">
+				&copy;2021 Tan Yi Ming
+			</a>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>
