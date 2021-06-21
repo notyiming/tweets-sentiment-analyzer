@@ -3,58 +3,56 @@
 
 
 {%block content%}
-<form autocomplete="off" action = "" method="POST">
+<section class="jumbotron big-container">
     <div class="row justify-content-center">
         <div class="mb-5">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">
-                    Tweets Sentiment Analyzer
-                    {% if username %}
-                        for @{{username}}
-                    {% endif %}
-                </h3></div>
-                <div class="card-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">@username</span>
-                        <input type="text" class="form-control py-3" placeholder="@username" required name="username" value='{{username}}'/>
-                        <span class="input-group-text" id="basic-addon2">number of tweets</span>
-                        <input type="number" name="num_of_tweets" aria-label="Last name" placeholder='{{tweets|length}}' required onkeypress="return event.charCode >= 48" min="1" class="form-control">
-                        <input type="submit" class="btn btn-primary" value="analyze" />
-                    </div>
-                      {% if tweets %}
-                        <canvas id="myChart" style="margin: 0 auto" width="400" height="400"></canvas>
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Tweet</th>
-                                  <th scope="col">Tag</th>
-                                  <th scope="col">Polarity</th>
-                                  <th scope="col">Subjectivity</th>
-                                </tr>
-                            </thead>
-                          {% for i in range(tweets|length) %}
-                            <tr>
-                                <td>{{i+1}}</td>
-                                <td>
-                                    {{ tweets[i] }}
-                                </td>
-                                {% if tag[i] == "Positive" %}
-                                    <td style="color:#4bc0c0">{{ tag[i] }}</td>
-                                {% elif tag[i] == "Negative" %}
-                                    <td style="color:#ff6384">{{ tag[i] }}</td>
-                                {% elif tag[i] == "Neutral" %}
-                                    <td style="color:gray">{{ tag[i] }}</td>
-                                {% endif %}
-                                <td>{{ "{:.2f}".format(score[i]) }}</td>
-                                <td>{{ "{:.2f}".format(subjectivity[i]) }}</td>
-                            </tr>
-                          {% endfor %}
-                        </table>
-                      {% endif %}
-                </div>
+        <h1 class="text-center font-weight-light my-4">
+        Tweets Sentiment Analyzer
+        {% if username %}
+            for @{{username}}
+        {% endif %}
+        </h1>
+        <form autocomplete="off" action = "" method="POST">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@username</span>
+                <input type="text" class="form-control py-3" placeholder="@username" required name="username" value='{{username}}'/>
+                <span class="input-group-text" id="basic-addon2">number of tweets</span>
+                <input type="number" name="num_of_tweets" aria-label="Last name" placeholder='{{tweets|length}}' required onkeypress="return event.charCode >= 48" min="1" class="form-control">
+                <input type="submit" class="btn btn-primary" value="analyze" />
             </div>
+        </form>
+          {% if tweets %}
+            <canvas id="myChart" style="margin: 0 auto" width="400" height="400"></canvas>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Tweet</th>
+                      <th scope="col">Tag</th>
+                      <th scope="col">Polarity</th>
+                      <th scope="col">Subjectivity</th>
+                    </tr>
+                </thead>
+              {% for i in range(tweets|length) %}
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td>
+                        {{ tweets[i] }}
+                    </td>
+                    {% if tag[i] == "Positive" %}
+                        <td style="color:#4bc0c0">{{ tag[i] }}</td>
+                    {% elif tag[i] == "Negative" %}
+                        <td style="color:#ff6384">{{ tag[i] }}</td>
+                    {% elif tag[i] == "Neutral" %}
+                        <td style="color:gray">{{ tag[i] }}</td>
+                    {% endif %}
+                    <td>{{ "{:.2f}".format(score[i]) }}</td>
+                    <td>{{ "{:.2f}".format(subjectivity[i]) }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          {% endif %}
         </div>
     </div>
-</form>
+</section>
 {%endblock%}
