@@ -22,6 +22,7 @@
                         <input type="submit" class="btn btn-primary" value="analyze" />
                     </div>
                       {% if tweets %}
+                        <canvas id="myChart" style="margin: 0 auto" width="400" height="400"></canvas>
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
@@ -39,9 +40,9 @@
                                     {{ tweets[i] }}
                                 </td>
                                 {% if tag[i] == "Positive" %}
-                                    <td style="color:green">{{ tag[i] }}</td>
+                                    <td style="color:#4bc0c0">{{ tag[i] }}</td>
                                 {% elif tag[i] == "Negative" %}
-                                    <td style="color:red">{{ tag[i] }}</td>
+                                    <td style="color:#ff6384">{{ tag[i] }}</td>
                                 {% elif tag[i] == "Neutral" %}
                                     <td style="color:gray">{{ tag[i] }}</td>
                                 {% endif %}
