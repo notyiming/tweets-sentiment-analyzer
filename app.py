@@ -2,16 +2,15 @@ from flask import Flask, render_template, request
 from textblob import TextBlob
 
 import tweepy
-CONSUMER_KEY = "ly8rpEKTe7clAhSYoiSDz0b9S"
-CONSUMER_SECRET = "jSOHhNgTAQfLG5ev3g1jkFE18VGBk2hSZ2fcxW7qnA1bvky3G8"
-ACCESS_TOKEN = "1379804667471933442-onHRDixTklpFjnVW2hjY8nuZ2FTCTi"
-ACCESS_TOKEN_SECRET = "tawVduygPYvWGD5uztJbqBFHZzneJX0jFRcvTGPGlEroQ"
+import api
+CONSUMER_KEY = api.CONSUMER_KEY
+CONSUMER_SECRET = api.CONSUMER_SECRET
+ACCESS_TOKEN = api.ACCESS_TOKEN
+ACCESS_TOKEN_SECRET = api.ACCESS_TOKEN_SECRET
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-# auth = tweepy.OAuthHandler("w1X27TSdDw4tuGPJ9WvnqN5PN", "9LajqdEafIwOx0tsCfPbgHaewmzFC3jjohxX56tLap8VokfLGZ")
-# auth.set_access_token("813994085560107008-6T9Y4DrlXTO5fLjk9J6RfMKTUiGnd2Q", "itRGLrIyPoRufb3esbpUybE0CZnsKQY7KZ3euz5lL3UjV")
 api = tweepy.API(auth)
 
 app = Flask(__name__)
