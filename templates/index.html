@@ -22,12 +22,14 @@
                 <span class="input-group-text" id="basic-addon1">@username</span>
                 <input type="text" class="form-control py-3" placeholder="@username" required name="username" value='{{username}}'/>
                 <span class="input-group-text" id="basic-addon2">number of tweets</span>
-                <input type="number" name="num_of_tweets" aria-label="Last name" placeholder='{{tweets|length}}' required onkeypress="return event.charCode >= 48" min="1" class="form-control">
-                <input type="submit" class="btn btn-primary" value="analyze" />
+                <input type="number" name="num_of_tweets" aria-label="Last name" placeholder='{{tweets|length}}' required onkeypress="return event.charCode >= 48" min="1" class="form-control py-3">
+                <input type="submit" class="btn btn-primary py-3" value="analyze" />
             </div>
         </form>
           {% if tweets %}
-            <canvas id="myChart" style="margin: 0 auto" width="400" height="400"></canvas>
+            <div class="wrapper">
+                <canvas id="myChart" style="margin: 0 auto" width="400" height="400"></canvas>
+            </div>
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>

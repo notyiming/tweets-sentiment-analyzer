@@ -19,3 +19,7 @@ body{
 .btn-help{
   background-color:#e9ecef;
 }
+
+.wrapper {
+height: 500px !important;
+}
