@@ -3,8 +3,8 @@ from textblob import TextBlob
 
 import tweepy
 
-auth = tweepy.OAuthHandler("w1X27TSdDw4tuGPJ9WvnqN5PN", "9LajqdEafIwOx0tsCfPbgHaewmzFC3jjohxX56tLap8VokfLGZ")
-auth.set_access_token("813994085560107008-6T9Y4DrlXTO5fLjk9J6RfMKTUiGnd2Q", "itRGLrIyPoRufb3esbpUybE0CZnsKQY7KZ3euz5lL3UjV")
+auth = tweepy.OAuthHandler(", "")
+auth.set_access_token("", "")
 api = tweepy.API(auth)
 
 app = Flask(__name__)
