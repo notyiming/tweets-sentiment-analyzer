@@ -16,7 +16,7 @@
 		<footer>
 			<div class="d-flex justify-content-end p-3">
 			<a target="_blank" href="https://www.tanyiming.com" class="copyright-link">
-				&copy;2021 Tan Yi Ming
+				&copy;<span id="year"></span> Tan Yi Ming
 			</a>
 			</div>
 		</footer>
@@ -39,6 +39,7 @@
 		</div>
 	</div>
 	<script>
+		document.getElementById("year").innerHTML = new Date().getFullYear();
 		var ctx = document.getElementById("myChart").getContext("2d");
 		var myChart = new Chart(ctx, {
 			type: 'doughnut',
