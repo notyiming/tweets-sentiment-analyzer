@@ -15,8 +15,8 @@ joblib==1.0.1
 kiwisolver==1.2.0
 MarkupSafe==2.0.1
 matplotlib==3.2.1
-nltk==3.7
-numpy==1.24.1
+nltk==3.6.2
+numpy==1.18.3
 oauthlib==3.1.0
 public==2019.4.13
 pyparsing==2.4.7
@@ -32,6 +32,6 @@ textblob==0.15.3
 tqdm==4.61.1
 tweepy==4.12.1
 typing-extensions==3.10.0.0
-urllib3==1.26.14
+urllib3==1.25.8
 Werkzeug==2.0.1
 zipp==3.4.1
