@@ -2,32 +2,19 @@ from flask import Flask, render_template, request
 from textblob import TextBlob
 
 import tweepy
-import api
-CONSUMER_KEY = api.CONSUMER_KEY
-CONSUMER_SECRET = api.CONSUMER_SECRET
-ACCESS_TOKEN = api.ACCESS_TOKEN
-ACCESS_TOKEN_SECRET = api.ACCESS_TOKEN_SECRET
+import os
 
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+KEY = os.environ.get("TWITTER_KEY")
+auth = tweepy.OAuth2BearerHandler(KEY)
 api = tweepy.API(auth)
 
 app = Flask(__name__)
 
 
 def get_tweets(api, username, num_of_tweets):
-    page = 1
-    tweet_text_list = []
-    while True:
-        tweets = api.user_timeline(username, page=page)
-        for tweet in tweets:
-            if num_of_tweets > 0:
-                tweet_text_list.append(tweet.text)
-                num_of_tweets -= 1
-            else:
-                return tweet_text_list
-        page += 1
+    tweets = api.user_timeline(screen_name=username, count=num_of_tweets)
+    return tweets
 
 
 def get_polarity_tag(polarity_score):
@@ -64,7 +51,7 @@ def home():
         polarity_subjectivity_list = []
 
         for tweet in tweet_text_list:
-            edu = TextBlob(tweet)
+            edu = TextBlob(tweet.text)
             polarity_score = edu.sentiment.polarity
             polarity_subjectivity = edu.sentiment.subjectivity
             polarity_tag = get_polarity_tag(polarity_score)
